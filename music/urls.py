@@ -9,7 +9,6 @@ router.register("tracks", viewset=TrackDetailApiView),
 router.register("artists", viewset=ArtistDetailApiView),
 
 urlpatterns = [
-    path('landing/', LandingPageApiView.as_view(), name='landing'),
     path('', include(router.urls)),
     path('auth/', views.obtain_auth_token),
 ]
