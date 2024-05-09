@@ -16,7 +16,7 @@ class VegetableAdmin(ImportExportModelAdmin):
 
 
 @admin.register(BestSell)
-class VegetableAdmin(ImportExportModelAdmin):
+class BestSellAdmin(ImportExportModelAdmin):
     list_display = ('id','title','rating','price')
     list_display_links = ('id','title','rating','price')
     search_fields = ('id','title')
