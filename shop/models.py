@@ -10,9 +10,16 @@ class Fruit(models.Model):
     information = models.TextField()
     price = models.FloatField()
     price_type = models.CharField(max_length=20, choices=PriceType.choices,default=PriceType.USD)
+    likes = models.PositiveBigIntegerField(default=0)
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        ordering = ('id',)
+        indexes = [
+            models.Index(fields=['id']),
+        ]
 
 class Vegetable(models.Model):
     class PriceType(models.TextChoices):
@@ -24,9 +31,16 @@ class Vegetable(models.Model):
     information = models.TextField()
     price = models.FloatField()
     price_type = models.CharField(max_length=20, choices=PriceType.choices,default=PriceType.USD)
+    likes = models.PositiveBigIntegerField(default=0)
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        ordering = ('id',)
+        indexes = [
+            models.Index(fields=['id']),
+        ]
 
 
 
@@ -41,6 +55,13 @@ class BestSell(models.Model):
     image = models.ImageField(upload_to='shop/bestselling/')
     price = models.FloatField()
     price_type = models.CharField(max_length=20, choices=PriceType.choices,default=PriceType.USD)
+    likes = models.PositiveBigIntegerField(default=0)
 
     def __str__(self):
         return self.title
+
+    class Meta:
+        ordering = ('id',)
+        indexes = [
+            models.Index(fields=['id']),
+        ]

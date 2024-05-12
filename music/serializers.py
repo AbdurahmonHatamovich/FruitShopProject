@@ -5,7 +5,7 @@ from music.models import Artist, Album, Tracks
 class ArtistSerializer(serializers.ModelSerializer):
     class Meta:
         model = Artist
-        fields = '__all__'
+        fields = ['name','last_update','created_date']
 
 class AlbumSerializer(serializers.ModelSerializer):
     artist = ArtistSerializer(read_only=True)
