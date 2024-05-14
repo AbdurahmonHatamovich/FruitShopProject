@@ -11,7 +11,15 @@ from rest_framework.decorators import action
 
 class ShopPageView(View):
     def get(self, request):
-        return render(request, 'main/shop.html')
+        fruits = Fruit.objects.all()
+        vegetables = Vegetable.objects.all()
+        bestsells = BestSell.objects.all()
+        context = {
+            'fruits': fruits,
+            'vegetables': vegetables,
+            'bestsells': bestsells,
+        }
+        return render(request, 'main/shop.html',context)
 
 
 

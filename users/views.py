@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect
 from django.views import View
+from shop.models import Fruit,BestSell,Vegetable
 from django.views.generic import CreateView
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import UserCreationForm
@@ -15,7 +16,15 @@ from django.core.exceptions import ObjectDoesNotExist
 
 class LandingView(View):
     def get(self, request):
-        return render(request, 'main/index.html')
+        fruits = Fruit.objects.all()
+        vegetables = Vegetable.objects.all()
+        bestsells = BestSell.objects.all()
+        context = {
+            'fruits': fruits,
+            'vegetables': vegetables,
+            'bestsells': bestsells,
+        }
+        return render(request, 'main/index.html',context)
 
 
 class LogOutView(View):
